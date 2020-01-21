@@ -8,6 +8,11 @@ class Murid_model extends CI_Model
         return $this->db->get('murid')->result_array();
     }
 
+    public function getAllMahasiswaById($id)
+    {
+        return $this->db->get_where('murid', ['id' => $id])->row_array();
+    }
+
     public function tambahDataMurid()
     {
         $data = [

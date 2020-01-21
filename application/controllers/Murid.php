@@ -39,4 +39,14 @@ class Murid extends CI_Controller
         $this->session->set_flashdata('pesan', 'Dihapus');
         redirect('Murid');
     }
+
+    public function detailMurid($id)
+    {
+        $data['judul'] = 'Detail Data Mahasiswa';
+        $data['murid'] = $this->Murid_model->getAllMahasiswaById($id);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('murid/detail', $data);
+        $this->load->view('templates/footer');
+    }
 }
