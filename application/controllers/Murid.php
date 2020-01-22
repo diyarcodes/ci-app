@@ -8,6 +8,10 @@ class Murid extends CI_Controller
         $data['judul'] = 'Daftar Murid';
         $data['murid'] = $this->Murid_model->getAllMahasiswa();
 
+        if ($this->input->post('keyword')) {
+            $data['murid'] = $this->Murid_model->cariDataMahasiswa();
+        }
+
         $this->load->view('templates/header', $data);
         $this->load->view('murid/index', $data);
         $this->load->view('templates/footer');
