@@ -30,4 +30,17 @@ class Murid_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->delete('murid');
     }
+
+    public function ubahDataMurid()
+    {
+        $data = [
+            "nama" => $this->input->post('nama', true),
+            "nisn" => $this->input->post('nisn', true),
+            "email" => $this->input->post('email', true),
+            "jurusan" => $this->input->post('jurusan')
+        ];
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('murid', $data);
+    }
 }

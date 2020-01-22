@@ -25,6 +25,7 @@
                 <?php foreach ($murid as $mrd) : ?>
                     <li class="list-group-item"><?= $mrd['nama']; ?>
                         <a href="<?= base_url('Murid/hapusMurid/') . $mrd['id']; ?>" class="badge badge-danger float-right" onclick="return confirm('Yakin?');">Hapus</a>
+                        <a href="<?= base_url('Murid/ubahMurid/') . $mrd['id']; ?>" class="badge badge-success float-right" onclick="return confirm('Yakin?');">Ubah</a>
                         <a href="<?= base_url('Murid/detailMurid/') . $mrd['id']; ?>" class="badge badge-primary float-right" onclick="return confirm('Yakin?');">Detail</a>
                     </li>
                 <?php endforeach; ?>

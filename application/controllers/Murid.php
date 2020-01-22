@@ -49,4 +49,25 @@ class Murid extends CI_Controller
         $this->load->view('murid/detail', $data);
         $this->load->view('templates/footer');
     }
+
+    public function ubahMurid($id)
+    {
+        $data['judul'] = 'Form Ubah Data Murid';
+        $data['murid'] = $this->Murid_model->getAllMahasiswaById($id);
+        $data['jurusan'] = ['Rekayasa Perangkat Lunak', 'Multimedia', 'Tekhnik Komputer Jaringan', 'Tekhnik Bisnis Sepeda Montor'];
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('nisn', 'Nisn', 'required|numeric');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('murid/ubah', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->Murid_model->ubahDataMurid();
+            $this->session->set_flashdata('pesan', 'Diubah');
+            redirect('Murid');
+        }
+    }
 }
